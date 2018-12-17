@@ -14,9 +14,15 @@ public class Counter {
         return value;
     }
 
+
+    //add
     public void setValue(int value) {
         this.formNumber = value;
         this.value += value;
+    }
+
+    public void increment(){
+        this.value += 1;
     }
 
     public long getId() {

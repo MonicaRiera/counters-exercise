@@ -3,9 +3,11 @@ package tech.bts.model;
 public class Counter {
     private int value;
     private long id;
+    private int formNumber;
 
     public Counter(){
         this.value = 0;
+        this.formNumber = 1;
     }
 
     public int getValue() {
@@ -13,6 +15,7 @@ public class Counter {
     }
 
     public void setValue(int value) {
+        this.formNumber = value;
         this.value += value;
     }
 
@@ -22,5 +25,9 @@ public class Counter {
 
     public void setId(long id) {
         this.id = id;
+    }
+
+    public int getFormNumber() {
+        return formNumber;
     }
 }

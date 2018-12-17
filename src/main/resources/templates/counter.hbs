@@ -4,7 +4,7 @@
 <ul>
     {{#each counter}}
         <li>
-            Counter {{id}} has value {{value}} <form action="/counters/increment/{{id}}" method="post">Value: <input type="number" name="value" value="1"><button>Increment value</button></form>
+            Counter {{id}} has value {{value}} <form action="/counters/increment/{{id}}" method="post">Value: <input type="number" name="value" value={{formNumber}}><button>Increment value</button></form>
         </li>
     {{/each}}
 </ul>

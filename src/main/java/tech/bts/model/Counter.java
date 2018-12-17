@@ -5,9 +5,10 @@ public class Counter {
     private long id;
     private int formNumber;
 
-    public Counter(){
+    public Counter(long id){
         this.value = 0;
         this.formNumber = 1;
+        this.id = id;
     }
 
     public int getValue() {
@@ -15,14 +16,13 @@ public class Counter {
     }
 
 
-    //add
-    public void setValue(int value) {
+    public void addValue(int value) {
         this.formNumber = value;
         this.value += value;
     }
 
     public void increment(){
-        this.value += 1;
+        this.value++;
     }
 
     public long getId() {

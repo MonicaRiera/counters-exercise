@@ -24,7 +24,7 @@ public class CounterService {
 
     public void increment(long id, int value) {
         Counter counter = counterMap.get(id);
-        counter.setValue(value);
+        counter.addValue(value);
     }
 
     public List<Counter> getCounters() {
@@ -32,11 +32,11 @@ public class CounterService {
     }
 
     public void addCounter() {
-        Counter counter = new Counter();
-        counter.setId(nextId);
+        this.counterMap.put(nextId, new Counter(nextId));
         nextId++;
-        this.counterMap.put(counter.getId(), counter);
     }
 
-
+    public long getNextId() {
+        return nextId;
+    }
 }

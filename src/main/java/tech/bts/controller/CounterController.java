@@ -35,9 +35,9 @@ public class CounterController {
         return HandlebarsUtil.getTemplate("counter", counterMap);
     }
 
-    @RequestMapping(method = RequestMethod.GET, path = "/increment/{id}")
-    public void increment(HttpServletResponse response, @PathVariable long id) throws IOException {
-        this.counterService.increment(id);
+    @RequestMapping(method = RequestMethod.POST, path = "/increment/{id}")
+    public void increment(HttpServletResponse response, @PathVariable long id, int value) throws IOException {
+        this.counterService.increment(id, value);
         response.sendRedirect("/counters");
     }
 

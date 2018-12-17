@@ -22,9 +22,9 @@ public class CounterService {
         this.nextId = 0;
     }
 
-    public void increment(long id) {
+    public void increment(long id, int value) {
         Counter counter = counterMap.get(id);
-        counter.setValue(1);
+        counter.setValue(value);
     }
 
     public List<Counter> getCounters() {

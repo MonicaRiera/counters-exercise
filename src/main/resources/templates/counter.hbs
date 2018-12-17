@@ -1,2 +1,11 @@
-<h1>Counter has value {{counter.value}}</h1>
-<p><a href=/counter/increment>Increment</a></p>
+<h1>Counters</h1>
+
+<p><a href=/counters/add>Add counter</a></p>
+<ul>
+    {{#each counter}}
+        <li>
+            Counter {{id}} has value {{value}} <a href="/counters/increment/{{id}}">Increment</a>
+        </li>
+    {{/each}}
+</ul>
+

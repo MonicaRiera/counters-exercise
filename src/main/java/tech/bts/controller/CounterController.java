@@ -2,6 +2,7 @@ package tech.bts.controller;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -12,10 +13,11 @@ import tech.bts.service.CounterService;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @RestController
-@RequestMapping(path = "/counter")
+@RequestMapping(path = "/counters")
 public class CounterController {
 
     private CounterService counterService;
@@ -26,17 +28,23 @@ public class CounterController {
     }
 
     @RequestMapping(method = RequestMethod.GET)
-    public String getCounter() throws Exception{
-        Counter counter = this.counterService.getCounter();
+    public String getCounters() throws Exception{
+        List<Counter> counters = this.counterService.getCounters();
         Map<String, Object> counterMap = new HashMap<>();
-        counterMap.put("counter", counter);
+        counterMap.put("counter", counters);
         return HandlebarsUtil.getTemplate("counter", counterMap);
     }
 
-    @RequestMapping(method = RequestMethod.GET, path = "/increment")
-    public void increment(HttpServletResponse response) throws IOException {
-        this.counterService.increment();
-        response.sendRedirect("/counter");
+    @RequestMapping(method = RequestMethod.GET, path = "/increment/{id}")
+    public void increment(HttpServletResponse response, @PathVariable long id) throws IOException {
+        this.counterService.increment(id);
+        response.sendRedirect("/counters");
+    }
+
+    @RequestMapping(method = RequestMethod.GET, path = "/add")
+    public void addCounter(HttpServletResponse response) throws IOException{
+        this.counterService.addCounter();
+        response.sendRedirect("/counters");
     }
 
 
